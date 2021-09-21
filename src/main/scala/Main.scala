@@ -12,7 +12,7 @@ object Main extends App {
   def filesInDir(path: String): List[Path] = {
     val dir = new File(path)
     if (dir.exists() && dir.isDirectory) {
-      dir.list().filter(_.endsWith(".csv")).map(Path.of(_)).toList
+      dir.listFiles().filter(_.getPath.endsWith(".csv")).map(fn => Path.of(fn.getPath)).toList
     } else {
       throw new IllegalArgumentException(s"$path is not a valid directory")
     }
